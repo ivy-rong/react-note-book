@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router'
 import { useStore } from '../../store'
 import { Button } from 'antd'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 function BearCounter() {
   const bears = useStore((state) => state.bears)
