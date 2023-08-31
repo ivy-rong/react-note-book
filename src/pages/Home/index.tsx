@@ -1,7 +1,5 @@
-import { Outlet } from 'react-router'
-import { useStore } from '../../store'
 import { Button } from 'antd'
-import { useEffect, useState } from 'react'
+import { useStore } from '@/store'
 
 function BearCounter() {
   const bears = useStore((state) => state.bears)
@@ -9,20 +7,20 @@ function BearCounter() {
 }
 
 export default function Home(): JSX.Element {
-  useEffect(() => {
-    fetch('http://localhost:3000/5?name=rwr', {
-      headers: {}
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res)
-      })
-  }, [])
-
   const [increasePopulation, removeAllBears] = useStore((state) => [
     state.increasePopulation,
     state.removeAllBears
   ])
+
+  useEffect(() => {
+    AuthAPI.loginByUsername({
+      username: 'Upwards',
+      password: '123456'
+    }).then((res) => {
+      console.log(res)
+    })
+  }, [])
+
   return (
     <>
       <div className="text-3xl font-bold underline bg-red-100">Home</div>

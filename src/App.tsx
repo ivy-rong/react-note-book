@@ -1,34 +1,36 @@
+import { lazy, Suspense } from 'react' //路由懒加载
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import {lazy,Suspense} from 'react' //路由懒加载
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom'
-
-const Home = lazy(() => import('../src/pages/Home/index'))
-const Login = lazy(() => import('../src/pages/Login/index'))
-const Signup = lazy(() => import('../src/pages/Signup/index'))
+const Home = lazy(() => import('@/pages/Home'))
+const Login = lazy(() => import('@/pages/Auth/Login'))
+const Signup = lazy(() => import('@/pages/Auth/Signup'))
+const NotFound = lazy(() => import('@/pages/ErrorPages/404'))
+const BaseLayout = lazy(() => import('@/layout/BaseLayout'))
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    path: '/',
+    element: <BaseLayout />,
     children: [
-      // {
-      //   path: "/login",
-      //   element: <Login />,
-      // },
       {
-        path: "/signup",
-        element: <Signup />,
+        path: '/',
+        element: <Home />
       },
-    ],
+      {
+        path: '/not-found',
+        element: <NotFound />
+      }
+    ]
   },
   {
-    path: "/login",
-    element: <Login/>
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/signup',
+    element: <Signup />
   }
-]);
+])
 
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <RouterProvider
@@ -40,12 +42,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-    <Suspense>
-      <RouterProvider
-      router={router}
-    />
-    
-    </Suspense>
+      <Suspense>
+        <RouterProvider router={router} />
+      </Suspense>
     </>
   )
 }
