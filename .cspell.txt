@@ -12,3 +12,4 @@ TASKWARD
 Avenir
 svgr
 Twotone
+hoverable
