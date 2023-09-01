@@ -1,55 +1,63 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
 import { Layout } from 'antd'
 import BaseHeader from '@/components/BaseHeader'
 import BaseSider from '@/components/BaseSider'
+import BaseFooter from '@/components/BaseFooter'
+import { useSiderStore } from '@/store'
 
 const { Header, Footer, Sider, Content } = Layout
 
 const headerStyle: React.CSSProperties = {
-  textAlign: 'center',
-  color: '#fff',
+  color: '#333333',
   height: 64,
-  paddingInline: 50,
-  lineHeight: '64px',
-  backgroundColor: '#7dbcea'
-}
-
-const contentStyle: React.CSSProperties = {
-  textAlign: 'center',
-  minHeight: 120,
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#108ee9'
+  padding: 0,
+  backgroundColor: '#ffffff'
 }
 
 const siderStyle: React.CSSProperties = {
   textAlign: 'center',
   lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#3ba0e9'
+  width: 64,
+  color: '#333333',
+  backgroundColor: '#ffffff'
 }
 
-const footerStyle: React.CSSProperties = {
-  textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '#7dbcea'
+export default function BaseLayout(): JSX.Element {
+  const [collapsed, toggleCollapsed] = useSiderStore((state) => [
+    state.collapsed,
+    state.toggleCollapsed
+  ])
+  return (
+    <>
+      <Layout className="h-screen bg-green-300 relative">
+        <Header
+          style={headerStyle}
+          className="border-b"
+        >
+          <BaseHeader />
+        </Header>
+        <Layout
+          hasSider
+          className="bg-pink-300 overflow-y-auto  h-[calc(100%-134px)]"
+        >
+          <Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={toggleCollapsed}
+            style={siderStyle}
+            className="border-r"
+          >
+            <BaseSider />
+          </Sider>
+          <Content>
+            <Outlet />
+          </Content>
+        </Layout>
+        <Footer className="border-t text-center">
+          <BaseFooter />
+        </Footer>
+      </Layout>
+    </>
+  )
 }
-
-const App: React.FC = () => (
-  <Layout>
-    <Header style={headerStyle}>
-      <BaseHeader />
-    </Header>
-    <Layout hasSider>
-      <Sider style={siderStyle}>
-        <BaseSider />
-      </Sider>
-      <Content style={contentStyle}>
-        <Outlet />
-      </Content>
-    </Layout>
-    <Footer style={footerStyle}>Footer</Footer>
-  </Layout>
-)
-
-export default App

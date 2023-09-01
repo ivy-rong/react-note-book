@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import AutoImport from 'unplugin-auto-import/vite'
 import { fileURLToPath, URL } from 'node:url'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,11 +18,21 @@ export default defineConfig({
         'react',
         'react-router-dom',
         {
-          axios: ['axios']
+          axios: ['axios'],
+          zustand: ['create']
         }
       ],
       dirs: ['src/api', 'src/utils'],
-      dts: './auto-imports.d.ts'
+      dts: './auto-imports.d.ts',
+      resolvers: [
+        IconsResolver({
+          prefix: 'Icon',
+          extension: 'jsx'
+        })
+      ]
+    }),
+    Icons({
+      compiler: 'jsx'
     })
   ],
   resolve: {

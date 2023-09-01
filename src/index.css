@@ -18,15 +18,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 body {
-  margin: 0;
-  display: flex;
-  min-width: 100vh;
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
 }
-
-
-
-
+#root {
+  height: 100vh;
+}

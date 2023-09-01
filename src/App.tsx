@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react' //路由懒加载
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
+import { ConfigProvider, theme } from 'antd'
+// import zhCN from 'antd/locale/zh_CN'
+import en_US from 'antd/locale/en_US'
 const Home = lazy(() => import('@/pages/Home'))
 const Login = lazy(() => import('@/pages/Auth/Login'))
 const Signup = lazy(() => import('@/pages/Auth/Signup'))
@@ -42,9 +44,16 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <Suspense>
-        <RouterProvider router={router} />
-      </Suspense>
+      <ConfigProvider
+        locale={en_US}
+        theme={{
+          algorithm: theme.defaultAlgorithm
+        }}
+      >
+        <Suspense>
+          <RouterProvider router={router} />
+        </Suspense>
+      </ConfigProvider>
     </>
   )
 }

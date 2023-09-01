@@ -10,4 +10,5 @@ unplugin
 xlink
 TASKWARD
 Avenir
-
+svgr
+Twotone

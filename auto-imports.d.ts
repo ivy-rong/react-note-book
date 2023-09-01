@@ -14,6 +14,7 @@ declare global {
   const Route: (typeof import('react-router-dom'))['Route']
   const Routes: (typeof import('react-router-dom'))['Routes']
   const axios: (typeof import('axios'))['axios']
+  const create: (typeof import('zustand'))['create']
   const createRef: (typeof import('react'))['createRef']
   const forwardRef: (typeof import('react'))['forwardRef']
   const lazy: (typeof import('react'))['lazy']
