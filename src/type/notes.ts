@@ -8,8 +8,6 @@ export interface task {
   updatedAt?: string
 }
 
-export type tasks = task[]
-
 export interface note {
   createdAt?: string
   description: string
@@ -17,9 +15,7 @@ export interface note {
   index: number
   name: string
   priority: number
-  tasks: tasks
+  tasks: task[]
   toped: boolean
   updatedAt: string
 }
-
-export type notes = note[]
