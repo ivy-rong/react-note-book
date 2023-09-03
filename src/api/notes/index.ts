@@ -1,11 +1,17 @@
+import { Note } from '@/type'
 import Request from '../axios'
+
+interface NotesResult {
+  notes: Note[]
+  count: number
+}
 
 export class NotesAPI {
   /**
    * 获取记事数据
    */
   static getNotes() {
-    return Request.get('/notes')
+    return Request.get<NotesResult>('/notes')
   }
 
   /**

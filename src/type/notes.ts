@@ -1,4 +1,4 @@
-export interface task {
+export interface Task {
   content?: string
   createdAt?: string
   finishedAt?: string
@@ -8,14 +8,14 @@ export interface task {
   updatedAt?: string
 }
 
-export interface note {
+export interface Note {
   createdAt?: string
   description: string
   id: number
   index: number
   name: string
   priority: number
-  tasks: task[]
+  tasks: Task[]
   toped: boolean
   updatedAt: string
 }

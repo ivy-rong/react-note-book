@@ -22,7 +22,14 @@ export default defineConfig({
           zustand: ['create']
         }
       ],
-      dirs: ['src/api', 'src/utils'],
+      dirs: [
+        'src/api',
+        'src/utils',
+        'src/components',
+        'src/type',
+        'src/store',
+        'src/layout'
+      ],
       dts: './auto-imports.d.ts',
       resolvers: [
         IconsResolver({
@@ -32,7 +39,8 @@ export default defineConfig({
       ]
     }),
     Icons({
-      compiler: 'jsx'
+      compiler: 'jsx',
+      jsx: 'react'
     })
   ],
   resolve: {
