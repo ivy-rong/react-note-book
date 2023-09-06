@@ -1,3 +1,9 @@
+import AuthLayout from '@/layout/AuthLayout'
+
 export default function Login(): JSX.Element {
-  return <div>登录</div>
+  return (
+    <AuthLayout>
+      <div>登录</div>
+    </AuthLayout>
+  )
 }
