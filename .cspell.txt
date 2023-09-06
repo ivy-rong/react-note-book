@@ -14,3 +14,4 @@ svgr
 Twotone
 hoverable
 clsx
+tanstack

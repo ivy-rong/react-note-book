@@ -5,7 +5,6 @@ const Login = lazy(() => import('@/pages/Auth/Login'))
 const Signup = lazy(() => import('@/pages/Auth/Signup'))
 const NotFound = lazy(() => import('@/pages/ErrorPages/404'))
 const BaseLayout = lazy(() => import('@/layout/BaseLayout'))
-const AuthLayout = lazy(() => import('@/layout/AuthLayout'))
 
 export const router = createBrowserRouter([
   {
@@ -24,16 +23,10 @@ export const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <AuthLayout />,
-    children: [
-      {
-        path: '/login',
-        element: <Login />
-      },
-      {
-        path: '/signup',
-        element: <Signup />
-      }
-    ]
+    element: <Login />
+  },
+  {
+    path: '/signup',
+    element: <Signup />
   }
 ])

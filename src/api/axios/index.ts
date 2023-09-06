@@ -67,12 +67,16 @@ class Request {
         break
       case HttpStatusCode.NotFound:
         //404
-        // location.href = '/not-found'
+        console.log('404')
+        location.href = '/not-found'
         // this.navigate('/not-found')
         break
       case HttpStatusCode.BadRequest:
         //400
-        location.href = '/bad-request'
+        if (location.pathname !== '/login' && location.pathname !== '/signup') {
+          location.href = '/not-found'
+        }
+        // location.href = '/not-found'
         // this.navigate('/bad-request')
         break
       default:

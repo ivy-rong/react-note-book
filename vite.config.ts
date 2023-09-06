@@ -19,7 +19,8 @@ export default defineConfig({
         'react-router-dom',
         {
           axios: ['axios'],
-          zustand: ['create']
+          zustand: ['create'],
+          antd: ['Button', 'Checkbox', 'Form', 'Input', 'message']
         }
       ],
       dirs: [
@@ -28,7 +29,8 @@ export default defineConfig({
         'src/components',
         'src/type',
         'src/store',
-        'src/layout'
+        'src/layout',
+        'src/hooks'
       ],
       dts: './auto-imports.d.ts',
       resolvers: [
