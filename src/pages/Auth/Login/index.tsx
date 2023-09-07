@@ -1,42 +1,29 @@
-import { LoginModel } from '@/type'
+import { LoginModel, userType, responseUser } from '@/type'
 
+import { Link, useNavigate } from 'react-router-dom'
 import LineMdAccount from '~icons/line-md/account'
 import SolarLockPasswordLinear from '~icons/solar/lock-password-linear'
 import AuthLayout from '@/layout/AuthLayout'
 import IcBaselineFavorite from '~icons/ic/baseline-favorite'
 
-// import {
-//   useQuery,
-//   useMutation,
-//   useQueryClient,
-//   QueryClient,
-//   QueryClientProvider
-// } from '@tanstack/react-query'
+import { useUserStore } from '@/store'
 
 export default function Login(): JSX.Element {
   const [messageApi, contextHolder] = message.useMessage()
-  // const queryClient = new QueryClient()
-  // const queryClient1 = useQueryClient()
 
-  // // Queries
-  // const query = useQuery({
-  //   queryKey: [''],
-  //   queryFn: AuthAPI.loginByUsername
-  // })
-
-  // // Mutations
-  // const mutation = useMutation({
-  //   mutationFn: postTodo,
-  //   onSuccess: () => {
-  //     // Invalidate and refetch
-  //     queryClient.invalidateQueries({ queryKey: [''] })
-  //   }
-  // })
-
+  const { setUser } = useUserStore()
+  const navigate = useNavigate()
   const onFinish = (value: LoginModel) => {
     AuthAPI.loginByUsername(value)
       .then((res) => {
-        console.log(res)
+        //存储user token
+        const { user, accessToken } = res as responseUser
+        setUser(user as userType)
+        AuthUtils.setToken(accessToken!)
+
+        //提示登录成功
+        messageApi.success('登录成功')
+        navigate('/', { replace: true })
       })
       .catch(() => {
         messageApi.error('登录失败')
@@ -44,7 +31,6 @@ export default function Login(): JSX.Element {
   }
 
   return (
-    // <QueryClientProvider client={queryClient}>
     <AuthLayout>
       {contextHolder}
       <div className="text-2xl ">登录</div>
@@ -85,13 +71,12 @@ export default function Login(): JSX.Element {
           >
             <Checkbox>记住密码</Checkbox>
           </Form.Item>
-
-          <a
+          <Link
+            to="/signup"
             className="login-form-forgot"
-            href="/signup"
           >
             注册
-          </a>
+          </Link>
         </Form.Item>
         <Form.Item>
           <Button
@@ -104,6 +89,5 @@ export default function Login(): JSX.Element {
         </Form.Item>
       </Form>
     </AuthLayout>
-    // </QueryClientProvider>
   )
 }

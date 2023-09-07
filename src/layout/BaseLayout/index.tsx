@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Layout } from 'antd'
 import BaseHeader from '@/components/BaseHeader'
 import BaseSider from '@/components/BaseSider'
 import BaseFooter from '@/components/BaseFooter'
 import { useSiderStore } from '@/store'
+import SvgSpinnersBarsScale from '~icons/svg-spinners/bars-scale'
 
 const { Header, Footer, Sider, Content } = Layout
 
@@ -30,34 +31,42 @@ export default function BaseLayout(): JSX.Element {
   ])
   return (
     <>
-      <Layout className="h-screen bg-green-300 relative">
-        <Header
-          style={headerStyle}
-          className="border-b"
-        >
-          <BaseHeader />
-        </Header>
-        <Layout
-          hasSider
-          className="bg-pink-300 overflow-y-auto  h-[calc(100%-134px)]"
-        >
-          <Sider
-            collapsible
-            collapsed={collapsed}
-            onCollapse={toggleCollapsed}
-            style={siderStyle}
-            className="border-r"
+      <Suspense
+        fallback={
+          <div className="w-full h-full justify-center flex items-center">
+            <SvgSpinnersBarsScale className="text-blue-200  text-5xl" />
+          </div>
+        }
+      >
+        <Layout className="h-screen bg-green-300 relative">
+          <Header
+            style={headerStyle}
+            className="border-b"
           >
-            <BaseSider />
-          </Sider>
-          <Content>
-            <Outlet />
-          </Content>
+            <BaseHeader />
+          </Header>
+          <Layout
+            hasSider
+            className="bg-pink-300 overflow-y-auto  h-[calc(100%-134px)]"
+          >
+            <Sider
+              collapsible
+              collapsed={collapsed}
+              onCollapse={toggleCollapsed}
+              style={siderStyle}
+              className="border-r"
+            >
+              <BaseSider />
+            </Sider>
+            <Content>
+              <Outlet />
+            </Content>
+          </Layout>
+          <Footer className="border-t text-center">
+            <BaseFooter />
+          </Footer>
         </Layout>
-        <Footer className="border-t text-center">
-          <BaseFooter />
-        </Footer>
-      </Layout>
+      </Suspense>
     </>
   )
 }
