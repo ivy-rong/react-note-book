@@ -13,7 +13,10 @@ function App() {
       <ConfigProvider
         locale={zhCN}
         theme={{
-          algorithm: theme.defaultAlgorithm
+          algorithm:
+            ThemeUtils.getTheme() === 'dark'
+              ? theme.darkAlgorithm
+              : theme.defaultAlgorithm
         }}
       >
         <Suspense>
