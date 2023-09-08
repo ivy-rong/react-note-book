@@ -18,7 +18,6 @@ const headerStyle: React.CSSProperties = {
 
 const siderStyle: React.CSSProperties = {
   textAlign: 'center',
-  lineHeight: '120px',
   width: 64,
   color: '#333333',
   backgroundColor: '#ffffff'
