@@ -7,31 +7,27 @@ import LineMdMenuUnfoldRight from '~icons/line-md/menu-unfold-right'
 import LineMdAccount from '~icons/line-md/account'
 import { useSiderStore } from '@/store'
 export default function Header(): JSX.Element {
-  const [toggleCollapsed, collapsed] = useSiderStore((state) => [
-    state.toggleCollapsed,
-    state.collapsed
-  ])
+  const { hasSider, toggleHasSider } = useSiderStore()
   return (
     <>
       <div className="flex justify-between items-center h-full  px-4">
         <div className="flex justify-start items-center  h-full space-x-2">
-          {collapsed ? (
-            <LineMdMenuUnfoldRight
-              className="text-xl cursor-pointer"
-              onClick={toggleCollapsed}
-            />
-          ) : (
-            <LineMdMenuUnfoldLeft
-              className="text-xl cursor-pointer"
-              onClick={toggleCollapsed}
-            />
-          )}
-
-          <span className="text-lg font-semibold">NoteBook</span>
           <img
             src="src/assets/logo.png"
             className="h-8 w-8"
           />
+          <span className="text-lg font-semibold">NoteBook</span>
+          {hasSider ? (
+            <LineMdMenuUnfoldRight
+              className="text-xl cursor-pointer"
+              onClick={toggleHasSider}
+            />
+          ) : (
+            <LineMdMenuUnfoldLeft
+              className="text-xl cursor-pointer"
+              onClick={toggleHasSider}
+            />
+          )}
         </div>
         <div className="flex justify-start items-center  h-full space-x-4">
           <LanguageIcon className="text-xl cursor-pointer" />
