@@ -1,7 +1,7 @@
 import NoteListCard from '@/components/NoteListCard'
 import EditListItem from '@/components/EditListItem'
 import { useUserStore } from '@/store'
-import { responseUser, Note } from '@/type'
+import { Note } from '@/type'
 import { Modal } from 'antd'
 import { useToggle } from '@/hooks'
 export default function Home(): JSX.Element {
@@ -12,14 +12,6 @@ export default function Home(): JSX.Element {
   const [showModal, toggleShowModal] = useToggle(false)
 
   useEffect(() => {
-    AuthAPI.loginByUsername({
-      username: 'Upwards',
-      password: '123456'
-    }).then((res) => {
-      const { user, accessToken } = res as responseUser
-      setUser(user)
-      AuthUtils.setToken(accessToken as string)
-    })
     NotesAPI.getNotes()
       .then((res) => {
         setNotes(res.notes)
