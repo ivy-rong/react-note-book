@@ -25,6 +25,7 @@ const siderStyle: React.CSSProperties = {
 
 export default function BaseLayout(): JSX.Element {
   const { collapsed, toggleCollapsed, hasSider } = useSiderStore()
+
   return (
     <>
       <Suspense
@@ -47,6 +48,8 @@ export default function BaseLayout(): JSX.Element {
           >
             {hasSider && (
               <Sider
+                width={160}
+                collapsedWidth={60}
                 collapsible
                 collapsed={collapsed}
                 onCollapse={toggleCollapsed}
@@ -60,7 +63,9 @@ export default function BaseLayout(): JSX.Element {
               <Outlet />
             </Content>
           </Layout>
-          <Footer className="flex justify-center items-center border-t h-9 bg-yellow-400">
+          <Footer
+            className={`flex justify-end items-center border-t h-9  !w-[calc(100%-0px)]`}
+          >
             <BaseFooter />
           </Footer>
         </Layout>

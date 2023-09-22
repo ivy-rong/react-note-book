@@ -1,7 +1,9 @@
+// const { collapsed, hasSider } = useSiderStore()
+
 export default function Login(): JSX.Element {
   const data = new Date().getFullYear()
   return (
-    <footer>
+    <footer className="w-full flex justify-center items-center">
       Powered by
       <a
         href="https://github.com/Upwards-rwr"

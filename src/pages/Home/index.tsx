@@ -4,6 +4,30 @@ import { useUserStore } from '@/store'
 import { Note } from '@/type'
 import { Modal } from 'antd'
 import { useToggle } from '@/hooks'
+
+// import { useReducer, createContext, useContext } from 'react'
+
+// interface State {
+//   count: number
+// }
+
+// type CounterAction =
+//   | { type: 'reset' }
+//   | { type: 'setCount'; value: State['count'] }
+
+// const initialState: State = { count: 0 }
+
+// function stateReducer(state: State, action: CounterAction): State {
+//   switch (action.type) {
+//     case 'reset':
+//       return initialState
+//     case 'setCount':
+//       return { ...state, count: action.value }
+//     default:
+//       throw new Error('Unknown action')
+//   }
+// }
+
 export default function Home(): JSX.Element {
   const [setUser] = useUserStore((state) => [state.setUser])
   const [notes, setNotes] = useState<Note[]>([])
@@ -31,6 +55,16 @@ export default function Home(): JSX.Element {
   function handleCancel() {
     toggleShowModal()
   }
+
+  // const [state1, dispatch] = useReducer(stateReducer, initialState)
+  // const addFive = () => dispatch({ type: 'setCount', value: state1.count + 5 })
+  // const reset = () => dispatch({ type: 'reset' })
+
+  // type Theme = 'light' | 'dark' | 'system'
+
+  // const ThemeContext = createContext<Theme>('system')
+
+  // const useGetTheme = () => useContext(ThemeContext)
 
   return (
     <>
