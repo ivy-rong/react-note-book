@@ -53,6 +53,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      '/api-note-book': {
+        target: 'http://localhost:3000/',
+        changeOrigin: true,
+        rewrite: (path: string) => path.replace(/^\/api-note-book/, '')
+      },
       '/api': {
         target: 'https://taskward.bit-ocean.studio',
         changeOrigin: true,

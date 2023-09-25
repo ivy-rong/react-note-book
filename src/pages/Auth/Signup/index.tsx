@@ -77,7 +77,7 @@ export default function Login(): JSX.Element {
           <Input.Password
             prefix={<SolarLockPasswordLinear />}
             type="password"
-            placeholder="确实密码"
+            placeholder="确认密码"
           />
         </Form.Item>
         <Form.Item>

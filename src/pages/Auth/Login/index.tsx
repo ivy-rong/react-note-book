@@ -12,18 +12,19 @@ export default function Login(): JSX.Element {
   const [messageApi, contextHolder] = message.useMessage()
 
   const { setUser } = useUserStore()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const onFinish = (value: LoginModel) => {
     AuthAPI.loginByUsername(value)
       .then((res) => {
+        console.log(res)
         //存储user token
         const { user, accessToken } = res as responseUser
         setUser(user as userType)
         AuthUtils.setToken(accessToken!)
 
         //提示登录成功
-        messageApi.success('登录成功')
-        navigate('/', { replace: true })
+        // messageApi.success('登录成功')
+        // navigate('/', { replace: true })
       })
       .catch(() => {
         messageApi.error('登录失败')
