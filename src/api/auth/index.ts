@@ -1,23 +1,18 @@
 import Request from '../axios'
-import { LoginModel, SignupModel } from '@/type'
+import { LoginModel, SignupModel, BaseResponse, responseUser } from '@/type'
 
 export class AuthAPI {
   /**
    * 用户名登录
    */
   static loginByUsername(data: LoginModel) {
-    // return axiosService({
-    //   method: 'POST',
-    //   url: 'auth/username/login',
-    //   data: data
-    // })
-    return Request.post('/auth/login', { ...data })
+    return Request.post<BaseResponse<responseUser>>('/auth/login', { ...data })
   }
   /**
    * 用户名注册d
    */
   static signup(data: SignupModel) {
-    return Request.post('/auth/signup', { ...data })
+    return Request.post<BaseResponse<responseUser>>('/auth/signup', { ...data })
   }
   /**
    * Github登录

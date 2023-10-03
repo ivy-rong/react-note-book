@@ -1,6 +1,6 @@
-import { LoginModel, userType, responseUser } from '@/type'
+import { LoginModel } from '@/type'
 
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import LineMdAccount from '~icons/line-md/account'
 import SolarLockPasswordLinear from '~icons/solar/lock-password-linear'
 import AuthLayout from '@/layout/AuthLayout'
@@ -18,16 +18,18 @@ export default function Login(): JSX.Element {
       .then((res) => {
         console.log(res)
         //存储user token
-        const { user, accessToken } = res as responseUser
-        setUser(user as userType)
+        const { data, message } = res
+        const { accessToken, user } = data
+        setUser(user)
         AuthUtils.setToken(accessToken!)
+        //将用户信息存到全局状态管理
 
-        //提示登录成功
-        // messageApi.success('登录成功')
+        // 提示登录成功
+        messageApi.success(message)
         // navigate('/', { replace: true })
       })
-      .catch(() => {
-        messageApi.error('登录失败')
+      .catch(({ message }) => {
+        messageApi.error(message)
       })
   }
 
@@ -35,6 +37,7 @@ export default function Login(): JSX.Element {
     <AuthLayout>
       {contextHolder}
       <div className="text-2xl ">登录</div>
+
       <div className="text-sm font-light flex justify-center items-center space-x-1">
         <IcBaselineFavorite className="text-red-300" />
         <span>欢迎到来</span>
