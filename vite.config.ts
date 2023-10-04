@@ -20,7 +20,7 @@ export default defineConfig({
         {
           axios: ['axios'],
           zustand: ['create'],
-          antd: ['Button', 'Checkbox', 'Form', 'Input', 'message']
+          antd: ['Button', 'Checkbox', 'Form', 'Input', 'message', 'Card']
         }
       ],
       dirs: [

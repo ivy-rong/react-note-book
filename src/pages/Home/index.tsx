@@ -41,18 +41,20 @@ export default function Home(): JSX.Element {
       .then((res: BaseResponse) => {
         const { data, message } = res
         const { notes, pageCount, pageSize, total } = data as NotesResponse
+
         messageApi.success(message)
         setNotes(notes)
+        console.log(notes)
         console.log(pageCount, pageSize, total)
       })
 
       .catch(() => setNotes([]))
   }, [messageApi, setUser])
 
-  // function openModal(data: Note) {
-  //   setEditNoteData(data)
-  //   toggleShowModal()
-  // }
+  function openModal(data: Note) {
+    setEditNoteData(data)
+    toggleShowModal()
+  }
 
   function handleSubmit() {
     toggleShowModal()
@@ -75,13 +77,15 @@ export default function Home(): JSX.Element {
   return (
     <>
       {contextHolder}
-      {/* {notes.map((note) => (
+      {/* {notes} */}
+      {notes.map((note) => (
         <NoteListCard
           key={note.id}
           data={note}
           openModal={openModal}
         />
-      ))} */}
+      ))}
+      <div>12321321</div>
       <Modal
         title="编辑"
         open={showModal}

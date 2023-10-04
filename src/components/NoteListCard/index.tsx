@@ -29,7 +29,7 @@ export default function NoteListCard(props: Props): JSX.Element {
         <Card
           hoverable
           // loading
-          title={props.data.name}
+          title={props.data.title}
           extra={
             !isEdit && <LineMdMenuToCloseIcon className="hover:text-red-300" />
           }

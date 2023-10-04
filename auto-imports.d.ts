@@ -13,6 +13,7 @@ declare global {
   const BaseSider: typeof import('./src/components/index')['BaseSider']
   const BrowserUtils: typeof import('./src/utils/browser/index')['BrowserUtils']
   const Button: typeof import('antd')['Button']
+  const Card: typeof import('antd')['Card']
   const Checkbox: typeof import('antd')['Checkbox']
   const EditListItem: typeof import('./src/components/index')['EditListItem']
   const Form: typeof import('antd')['Form']

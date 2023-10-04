@@ -10,22 +10,10 @@ import LineMdAccount from '~icons/line-md/account'
 import { useSiderStore } from '@/store'
 export default function Header(): JSX.Element {
   const { hasSider, toggleHasSider } = useSiderStore()
-  const [showArrow, setShowArrow] = useState(true)
-  const [arrowAtCenter, setArrowAtCenter] = useState(false)
-
-  const mergedArrow = useMemo(() => {
-    if (arrowAtCenter) return { pointAtCenter: true }
-    return showArrow
-  }, [showArrow, arrowAtCenter])
   return (
     <>
       <div className="flex justify-between items-center h-full  px-4">
         <div className="flex justify-start items-center  h-full space-x-2">
-          <img
-            src="src/assets/logo.png"
-            className="h-8 w-8"
-          />
-          <span className="text-lg font-semibold">NoteBook</span>
           {hasSider ? (
             <LineMdMenuUnfoldRight
               className="text-xl cursor-pointer"

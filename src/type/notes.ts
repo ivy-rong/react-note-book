@@ -1,21 +1,25 @@
-export interface Task {
+export interface Content {
   content?: string
-  createdAt?: string
-  finishedAt?: string
+  createdAt?: Date
+  createdBy?: string
+  deletedAt?: Date
+  deletedBy?: string
+  updatedAt?: Date
+  updatedBy?: string
   id?: number
-  index?: number
-  linkUrl?: string
-  updatedAt?: string
+  noteId: number
 }
 
 export interface Note {
-  createdAt?: string
-  description: string
+  createdAt?: Date
+  createdBy?: string
+  deletedAt?: Date
+  deletedBy?: string
+  updatedAt?: Date
+  updatedBy?: string
+  authorId: number
   id: number
-  index: number
-  name: string
-  priority: number
-  tasks: Task[]
-  toped: boolean
-  updatedAt: string
+  published: boolean
+  contents: Content[]
+  title: string
 }
