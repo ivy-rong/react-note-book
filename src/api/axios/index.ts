@@ -73,9 +73,9 @@ class Request {
         break
       case HttpStatusCode.BadRequest:
         //400
-        if (location.pathname !== '/login' && location.pathname !== '/signup') {
-          location.href = '/not-found'
-        }
+        // if (location.pathname !== '/login' && location.pathname !== '/signup') {
+        //   location.href = '/not-found'
+        // }
         // location.href = '/not-found'
         // this.navigate('/bad-request')
         break

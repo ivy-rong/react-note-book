@@ -12,7 +12,7 @@ export default function Login(): JSX.Element {
   const [messageApi, contextHolder] = message.useMessage()
 
   const { setUser } = useUserStore()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const onFinish = (value: LoginModel) => {
     AuthAPI.loginByUsername(value)
       .then((res) => {
@@ -20,13 +20,13 @@ export default function Login(): JSX.Element {
         //存储user token
         const { data, message } = res
         const { accessToken, user } = data
+        //将用户信息存到全局状态管理
         setUser(user)
         AuthUtils.setToken(accessToken!)
-        //将用户信息存到全局状态管理
 
         // 提示登录成功
         messageApi.success(message)
-        // navigate('/', { replace: true })
+        navigate('/', { replace: true })
       })
       .catch(({ message }) => {
         messageApi.error(message)

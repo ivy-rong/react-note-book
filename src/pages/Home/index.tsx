@@ -1,7 +1,6 @@
-import NoteListCard from '@/components/NoteListCard'
-import EditListItem from '@/components/EditListItem'
+import { NoteListCard, EditListItem } from '@/components'
 import { useUserStore } from '@/store'
-import { Note } from '@/type'
+import { Note, BaseResponse, NotesResponse } from '@/type'
 import { Modal } from 'antd'
 import { useToggle } from '@/hooks'
 
@@ -35,18 +34,25 @@ export default function Home(): JSX.Element {
 
   const [showModal, toggleShowModal] = useToggle(false)
 
+  const [messageApi, contextHolder] = message.useMessage()
+
   useEffect(() => {
     NotesAPI.getNotes()
-      .then((res) => {
-        setNotes(res.notes)
+      .then((res: BaseResponse) => {
+        const { data, message } = res
+        const { notes, pageCount, pageSize, total } = data as NotesResponse
+        messageApi.success(message)
+        setNotes(notes)
+        console.log(pageCount, pageSize, total)
       })
-      .catch(() => setNotes([]))
-  }, [setUser])
 
-  function openModal(data: Note) {
-    setEditNoteData(data)
-    toggleShowModal()
-  }
+      .catch(() => setNotes([]))
+  }, [messageApi, setUser])
+
+  // function openModal(data: Note) {
+  //   setEditNoteData(data)
+  //   toggleShowModal()
+  // }
 
   function handleSubmit() {
     toggleShowModal()
@@ -68,13 +74,14 @@ export default function Home(): JSX.Element {
 
   return (
     <>
-      {notes.map((note) => (
+      {contextHolder}
+      {/* {notes.map((note) => (
         <NoteListCard
           key={note.id}
           data={note}
           openModal={openModal}
         />
-      ))}
+      ))} */}
       <Modal
         title="编辑"
         open={showModal}

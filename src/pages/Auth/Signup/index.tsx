@@ -1,4 +1,4 @@
-import { SignupModel, userType, responseUser } from '@/type'
+import { SignupModel } from '@/type'
 
 import { Link, useNavigate } from 'react-router-dom'
 import LineMdAccount from '~icons/line-md/account'
@@ -16,13 +16,13 @@ export default function Login(): JSX.Element {
     AuthAPI.signup(value)
       .then((res) => {
         //存储user token
-        console.log(res)
-        const { user, accessToken } = res as responseUser
-        setUser(user as userType)
+        const { message, data } = res
+        const { user, accessToken } = data
+        setUser(user)
         AuthUtils.setToken(accessToken!)
 
         //提示登录成功
-        messageApi.success('注册成功')
+        messageApi.success(message)
         navigate('/', { replace: true })
       })
       .catch(() => {

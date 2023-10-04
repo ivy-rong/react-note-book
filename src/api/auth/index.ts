@@ -9,7 +9,7 @@ export class AuthAPI {
     return Request.post<BaseResponse<responseUser>>('/auth/login', { ...data })
   }
   /**
-   * 用户名注册d
+   * 用户名注册
    */
   static signup(data: SignupModel) {
     return Request.post<BaseResponse<responseUser>>('/auth/signup', { ...data })
