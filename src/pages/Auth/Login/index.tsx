@@ -1,4 +1,4 @@
-import { LoginModel } from '@/type'
+import { LoginModel } from '@/types'
 
 import { Link } from 'react-router-dom'
 import LineMdAccount from '~icons/line-md/account'

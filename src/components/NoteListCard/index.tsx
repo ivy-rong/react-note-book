@@ -1,5 +1,5 @@
 import { Card } from 'antd'
-import { Note } from '@/type'
+import { Note } from '@/types'
 import ListItem from '../ListItem'
 import LineMdMenuToCloseIcon from '~icons/line-md/menu-to-close-alt-transition'
 import LineMdEditTwotone from '~icons/line-md/edit-twotone'

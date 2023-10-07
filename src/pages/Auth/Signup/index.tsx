@@ -1,4 +1,4 @@
-import { SignupModel } from '@/type'
+import { SignupModel } from '@/types'
 
 import { Link, useNavigate } from 'react-router-dom'
 import LineMdAccount from '~icons/line-md/account'

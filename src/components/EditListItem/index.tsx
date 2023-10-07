@@ -1,4 +1,4 @@
-import { Note } from '@/type'
+import { Note } from '@/types'
 import ListItem from '../ListItem'
 import { Input } from 'antd'
 import IcSharpPlaylistAdd from '~icons/ic/sharp-playlist-add'

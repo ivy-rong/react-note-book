@@ -1,4 +1,4 @@
-import { Note } from '@/type'
+import { Note } from '@/types'
 export interface Response {
   code?: number | string
   message?: string

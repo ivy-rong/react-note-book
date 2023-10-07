@@ -1,4 +1,4 @@
-import type { Theme } from '@/type'
+import type { Theme } from '@/types'
 
 export class ThemeUtils {
   /**

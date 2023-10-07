@@ -1,6 +1,6 @@
 import { NoteListCard, EditListItem } from '@/components'
 import { useUserStore } from '@/store'
-import { Note, BaseResponse, NotesResponse } from '@/type'
+import { Note, BaseResponse, NotesResponse } from '@/types'
 import { Modal } from 'antd'
 import { useToggle } from '@/hooks'
 

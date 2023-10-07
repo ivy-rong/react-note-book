@@ -1,4 +1,4 @@
-import { userType } from '@/type'
+import { userType } from '@/types'
 
 type State = {
   user: userType

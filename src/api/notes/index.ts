@@ -1,4 +1,4 @@
-import { BaseResponse, NotesResponse } from '@/type'
+import { BaseResponse, NotesResponse } from '@/types'
 // import { Note } from '@/type'
 import Request from '../axios'
 

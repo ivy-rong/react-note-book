@@ -1,7 +1,7 @@
 import { Input, Checkbox } from 'antd'
 const { TextArea } = Input
 
-import { Task } from '@/type'
+import { Task } from '@/types'
 import IcOutlineInsertLink from '~icons/ic/outline-insert-link'
 import LineMdMenuToCloseIcon from '~icons/line-md/menu-to-close-alt-transition'
 
