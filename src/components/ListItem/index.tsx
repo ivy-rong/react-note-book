@@ -4,8 +4,17 @@ const { TextArea } = Input
 import { Content } from '@/types'
 // import IcOutlineInsertLink from '~icons/ic/outline-insert-link'
 import LineMdMenuToCloseIcon from '~icons/line-md/menu-to-close-alt-transition'
+import { SetStateAction } from 'react'
 
 export default function ListItem(props: Content): JSX.Element {
+  const [inputValue, setInputValue] = useState(props.content)
+
+  const handleChange = (event: {
+    target: { value: SetStateAction<string | undefined> }
+  }) => {
+    setInputValue(event.target.value)
+  }
+
   return (
     <>
       <div className="p-1">
@@ -15,11 +24,12 @@ export default function ListItem(props: Content): JSX.Element {
           </div>
           <div className="flex justify-start items-start w-[90%] ">
             <TextArea
+              onChange={handleChange}
               bordered={false}
               autoSize
               placeholder="Basic usage"
               className="inline-block text-lg"
-              value={props.content}
+              value={inputValue}
             />
           </div>
         </div>

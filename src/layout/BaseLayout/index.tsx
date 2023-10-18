@@ -72,13 +72,7 @@ export default function BaseLayout(): JSX.Element {
               <BaseHeader />
             </Header>
             <Content className="h-[calc(100%-112px)] overflow-y-auto p-4 ">
-              <Card
-                bordered={false}
-                hoverable
-                className=" min-h-full rounded w-full bg-white"
-              >
-                <Outlet />
-              </Card>
+              <Outlet />
             </Content>
             <Footer className="h-12 w-full flex border-t  !bg-white">
               <BaseFooter />
