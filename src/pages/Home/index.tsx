@@ -85,7 +85,6 @@ export default function Home(): JSX.Element {
           openModal={openModal}
         />
       ))}
-      <div>12321321</div>
       <Modal
         title="编辑"
         open={showModal}

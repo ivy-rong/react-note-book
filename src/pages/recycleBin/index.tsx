@@ -10,9 +10,5 @@ export default function RecycleBin(): JSX.Element {
     })
   }, [])
 
-  return (
-    <>
-      <NoteListCard />
-    </>
-  )
+  return <>{/* <NoteListCard /> */}</>
 }

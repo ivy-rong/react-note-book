@@ -1,6 +1,6 @@
 import { Card } from 'antd'
 import { Note } from '@/types'
-// import ListItem from '../ListItem'
+import ListItem from '../ListItem'
 import LineMdMenuToCloseIcon from '~icons/line-md/menu-to-close-alt-transition'
 import LineMdEditTwotone from '~icons/line-md/edit-twotone'
 import LineMdTextIcon from '~icons/line-md/text-box-multiple-twotone-to-text-box-twotone-transition'
@@ -28,7 +28,7 @@ export default function NoteListCard(props: Props): JSX.Element {
       <div className="flex justify-center">
         <Card
           hoverable
-          loading
+          // loading
           title={props.data.title}
           extra={
             !isEdit && <LineMdMenuToCloseIcon className="hover:text-red-300" />
@@ -61,13 +61,12 @@ export default function NoteListCard(props: Props): JSX.Element {
             />
           ]}
         >
-          {/* <p>{props.data?.description}</p> */}
-          {/* {props.data.tasks?.map((task) => (
+          {props.data.contents?.map((task) => (
             <ListItem
               key={task.id}
               {...task}
             />
-          ))} */}
+          ))}
         </Card>
       </div>
     </>

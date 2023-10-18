@@ -7,7 +7,7 @@ export interface Content {
   updatedAt?: Date
   updatedBy?: string
   id?: number
-  noteId: number
+  noteId?: number
 }
 
 export interface Note {
