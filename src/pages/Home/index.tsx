@@ -78,7 +78,7 @@ export default function Home(): JSX.Element {
     <>
       {contextHolder}
       {/* {notes} */}
-      {notes.map((note) => (
+      {notes?.map((note) => (
         <NoteListCard
           key={note.id}
           data={note}
