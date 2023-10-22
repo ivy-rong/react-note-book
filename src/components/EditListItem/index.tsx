@@ -10,9 +10,9 @@ export default function EditListList(props: Props): JSX.Element {
   return (
     <>
       <div className="flex justify-center flex-col">
-        <Input>{props.data.name}</Input>
-        <Input>{props.data.description}</Input>
-        {props.data.tasks.map((task) => (
+        <Input>{props.data.title}</Input>
+        {/* <Input>{props.data.contents}</Input> */}
+        {props.data.contents.map((task) => (
           <ListItem
             key={task.id}
             {...task}

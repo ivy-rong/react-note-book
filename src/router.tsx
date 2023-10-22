@@ -5,8 +5,6 @@ const Login = lazy(() => import('@/pages/Auth/Login'))
 const Signup = lazy(() => import('@/pages/Auth/Signup'))
 const NotFound = lazy(() => import('@/pages/ErrorPages/404'))
 
-const BaseLayout = lazy(() => import('@/layout/BaseLayout/index'))
-
 export const router = createBrowserRouter([
   {
     path: '/',

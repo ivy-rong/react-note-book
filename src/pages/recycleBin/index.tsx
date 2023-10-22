@@ -1,5 +1,3 @@
-import NoteListCard from '@/components/NoteListCard'
-
 export default function RecycleBin(): JSX.Element {
   useEffect(() => {
     AuthAPI.loginByUsername({
