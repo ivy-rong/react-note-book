@@ -11,7 +11,6 @@ export default function EditListList(props: Props): JSX.Element {
     <>
       <div className="flex justify-center flex-col">
         <Input>{props.data.title}</Input>
-        {/* <Input>{props.data.contents}</Input> */}
         {props.data.contents.map((task) => (
           <ListItem
             key={task.id}

@@ -18,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: '/not-found',
         element: <NotFound />
+      },
+      {
+        path: '/todoItem',
+        element: <Signup />
       }
     ]
   },

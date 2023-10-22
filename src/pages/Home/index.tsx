@@ -77,7 +77,6 @@ export default function Home(): JSX.Element {
   return (
     <>
       {contextHolder}
-      {/* {notes} */}
       {notes?.map((note) => (
         <NoteListCard
           key={note.id}
@@ -86,7 +85,7 @@ export default function Home(): JSX.Element {
         />
       ))}
       <Modal
-        title="编辑"
+        title="编辑note"
         open={showModal}
         onOk={handleSubmit}
         onCancel={handleCancel}
