@@ -3,6 +3,10 @@
     {
       "source": "/:path*",
       "destination": "/index.html"
+    },
+    {
+      "source": "/api-note-book/:path*",
+      "destination": "http://106.54.222.70:3000/"
     }
   ]
 }
