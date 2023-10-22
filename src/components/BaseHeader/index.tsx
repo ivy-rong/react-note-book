@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { Tooltip, Popover } from 'antd'
 
 import LogosGithubIcon from '~icons/logos/github-icon'
@@ -7,9 +8,22 @@ import LanguageIcon from '~icons/ion/language-outline'
 import LineMdMenuUnfoldLeft from '~icons/line-md/menu-unfold-left'
 import LineMdMenuUnfoldRight from '~icons/line-md/menu-unfold-right'
 import LineMdAccount from '~icons/line-md/account'
-import { useSiderStore } from '@/store'
+
+import { useSiderStore, useUserStore } from '@/store'
+
 export default function Header(): JSX.Element {
+  const navigate = useNavigate()
   const { hasSider, toggleHasSider } = useSiderStore()
+  const { clearUser } = useUserStore()
+
+  const loginOut = () => {
+    //1.清除token
+    AuthUtils.clearToken()
+    //2.清除用户信息
+    clearUser()
+    //3.跳转到登录页面
+    navigate('/login')
+  }
   return (
     <>
       <div className="flex justify-between items-center h-full  px-4">
@@ -84,7 +98,10 @@ export default function Header(): JSX.Element {
                 <div className="cursor-pointer px-2 rounded hover:bg-blue-100">
                   个人中心
                 </div>
-                <div className="cursor-pointer px-2 rounded hover:bg-blue-100">
+                <div
+                  onClick={loginOut}
+                  className="cursor-pointer px-2 rounded hover:bg-blue-100"
+                >
                   退出登录
                 </div>
               </>
