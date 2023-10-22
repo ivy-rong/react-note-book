@@ -54,7 +54,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api-note-book': {
-        target: 'http://localhost:3000/',
+        target: 'http://localhost:3000',
+        // target: 'http://106.54.222.70:3000',
         changeOrigin: true,
         rewrite: (path: string) => path.replace(/^\/api-note-book/, '')
       },
