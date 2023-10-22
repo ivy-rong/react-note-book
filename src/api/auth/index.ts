@@ -1,5 +1,5 @@
 import Request from '../axios'
-import { LoginModel, SignupModel, BaseResponse, responseUser } from '@/type'
+import { LoginModel, SignupModel, BaseResponse, responseUser } from '@/types'
 
 export class AuthAPI {
   /**
